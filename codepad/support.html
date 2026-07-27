@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodePad — Support</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0b0f19;
+    color: #f3f4f6;
+    padding: 48px 24px 80px;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 30px; margin: 0 0 24px; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { color: #c9d1d9; font-size: 16px; }
+  a { color: #79c0ff; }
+  .back { display: inline-block; margin-bottom: 28px; color: #79c0ff; text-decoration: none; font-size: 15px; }
+  .btn {
+    display: inline-block;
+    background: #1f6feb;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 999px;
+    margin: 8px 0 4px;
+  }
+  .btn:hover { background: #388bfd; }
+  details {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 10px 0 2px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Apps</a>
+  <h1>CodePad Support</h1>
+
+  <h2>Feedback &amp; bug reports</h2>
+  <p>Found a bug, or have an idea? Send it through the feedback form — it goes straight to the developer.</p>
+  <a class="btn" href="https://forms.gle/Jm3jDNEy9FcMm2is7">Send Feedback</a>
+
+  <h2>FAQ</h2>
+
+  <details>
+    <summary>Which file types can CodePad open?</summary>
+    <p>HTML, JSON, XML, YAML, JavaScript, Swift, Python, and plain text files (.txt and other text-based formats). HTML files can be previewed as rendered pages or viewed as source.</p>
+  </details>
+
+  <details>
+    <summary>Does editing change my original file?</summary>
+    <p>Yes — that's the point. CodePad opens the original file in place (not a copy), and tapping the save button writes your changes directly back to it. If you want to keep the original, duplicate it in the Files app first.</p>
+  </details>
+
+  <details>
+    <summary>Why don't images or CSS load in my HTML preview?</summary>
+    <p>iOS grants CodePad access to only the single file you picked. Resources referenced by relative paths (like <code>./style.css</code>) live outside that permission, so they can't be loaded. Resources referenced by full web URLs load normally.</p>
+  </details>
+
+  <details>
+    <summary>How do I undo changes while editing?</summary>
+    <p>While in edit mode, use the undo/redo arrows in the toolbar. Tapping the X button cancels the editing session and restores the file to how it was when you started.</p>
+  </details>
+
+  <details>
+    <summary>Is my data collected or uploaded anywhere?</summary>
+    <p>No. CodePad has no analytics, no accounts, and no servers. See the <a href="privacy.html">privacy policy</a>.</p>
+  </details>
+</div>
+</body>
+</html>
