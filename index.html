@@ -3,64 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rcchoi — Apps</title>
+<title>Solum — On-device AI chat for iOS</title>
+<meta name="description" content="Run open AI models on your iPhone, or connect your own API key. The app always shows you where a conversation goes.">
 <style>
-  :root { color-scheme: light dark; }
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --surface: rgba(0,0,0,0.03);
+    --line: rgba(0,0,0,0.09);
+    --text: #111827;
+    --body: #374151;
+    --muted: #5b6472;
+    --accent: #0E6157;
+    --accentHover: #14806f;
+    --onAccent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f19;
+      --surface: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.08);
+      --text: #f3f4f6;
+      --body: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #42B98B;
+      --accentHover: #5ccfa2;
+      /* 밝은 초록 위의 흰 글자는 대비가 2:1대로 무너진다. */
+      --onAccent: #06251f;
+    }
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #0b0f19;
-    color: #f3f4f6;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    padding: 44px 24px 90px;
+    line-height: 1.65;
   }
-  .wrap { max-width: 560px; width: 100%; }
-  h1 { font-size: 28px; margin: 0 0 6px; }
-  p.tag { color: #8b949e; margin: 0 0 32px; }
-  .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 16px;
+  .wrap { max-width: 680px; margin: 0 auto; }
+  .back { display: inline-block; margin-bottom: 30px; color: var(--accent); text-decoration: none; font-size: 15px; }
+  h1 { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .tag { color: var(--muted); font-size: 17px; margin: 0 0 26px; }
+  h2 { font-size: 20px; margin: 40px 0 10px; letter-spacing: -0.01em; }
+  p, li { color: var(--body); font-size: 16px; }
+  a { color: var(--accent); }
+  .btn {
+    display: inline-block; background: var(--accent); color: var(--onAccent);
+    text-decoration: none; font-weight: 600; padding: 12px 22px;
+    border-radius: 999px; margin: 4px 8px 4px 0;
   }
-  .card h2 { margin: 0 0 4px; font-size: 20px; }
-  .card p { margin: 0 0 14px; color: #9aa4b2; font-size: 15px; line-height: 1.5; }
-  .links a {
-    display: inline-block;
-    margin-right: 14px;
-    color: #79c0ff;
-    text-decoration: none;
-    font-size: 15px;
+  .btn:hover { background: var(--accentHover); }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .btn.ghost:hover { background: var(--surface); }
+  .lede {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 16px; padding: 18px 20px; margin: 0 0 8px;
   }
-  .links a:hover { text-decoration: underline; }
+  .lede p { margin: 0; font-size: 17px; color: var(--text); }
+  ul { padding-left: 0; list-style: none; margin: 0 0 8px; }
+  ul li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  ul li:last-child { border-bottom: 0; }
+  ul li b { color: var(--text); display: block; font-size: 16px; margin-bottom: 1px; }
+  ul li span { color: var(--muted); font-size: 15px; }
+  table { border-collapse: collapse; width: 100%; margin: 6px 0 8px; }
+  th, td { border: 1px solid var(--line); padding: 10px 13px; text-align: left; font-size: 15px; vertical-align: top; }
+  th { background: var(--surface); font-weight: 600; color: var(--text); }
+  td { color: var(--body); }
+  .note { color: var(--muted); font-size: 15px; }
+  .foot { margin-top: 46px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Apps</h1>
-  <p class="tag">Support &amp; policies for apps by rcchoi</p>
+  <a class="back" href="../index.html">&larr; Apps</a>
 
-  <div class="card">
-    <h2>CodePad</h2>
-    <p>A lightweight code viewer &amp; editor for iOS. Open files right where they live — no copies, no imports.</p>
-    <div class="links">
-      <a href="codepad/privacy.html">Privacy Policy</a>
-      <a href="codepad/support.html">Support</a>
-    </div>
+  <h1>Solum</h1>
+  <p class="tag">On-device AI chat for iPhone and iPad.</p>
+
+  <div class="lede">
+    <p>Download an open model once and chat with it offline — no account, no sign-up, nothing sent to a server. When you want more than a phone can hold, add your own API key and Solum talks to a hosted model instead. <strong>The app always shows you which one you are using.</strong></p>
   </div>
 
-  <div class="card">
-    <h2>Solum</h2>
-    <p>On-device LLM chat for iOS. Your conversations never leave your phone.</p>
-    <div class="links">
-      <a href="solum/privacy.html">Privacy Policy</a>
-      <a href="solum/support.html">Support</a>
-    </div>
+  <p style="margin-top:22px">
+    <a class="btn ghost" href="support.html">Support</a>
+    <a class="btn ghost" href="privacy.html">Privacy</a>
+  </p>
+
+  <h2>On your device</h2>
+  <ul>
+    <li>
+      <b>Open models, running locally</b>
+      <span>GGUF, LiteRT-LM and MLX formats, plus Apple's built-in model with nothing to download. Metal acceleration, and it keeps working on a plane or underground.</span>
+    </li>
+    <li>
+      <b>Honest guidance on what fits</b>
+      <span>Every model shows a gauge for how it fits <em>your</em> device, not a generic one. Downloads run in the background and can be paused and resumed.</span>
+    </li>
+    <li>
+      <b>More than text</b>
+      <span>Attach photos and ask about them, dictate a message, or send real audio to models that can listen. Replies can be read aloud.</span>
+    </li>
+  </ul>
+
+  <h2>Or your own key</h2>
+  <ul>
+    <li>
+      <b>Bring your own provider</b>
+      <span>Add an API key and those models appear in the same chat screen. Keys live in the iOS Keychain and are sent only to the provider they belong to.</span>
+    </li>
+    <li>
+      <b>You are never guessing</b>
+      <span>Cloud conversations are marked as cloud. You pay your provider directly and Solum takes no cut.</span>
+    </li>
+  </ul>
+
+  <h2>The assistant can do things</h2>
+  <ul>
+    <li>
+      <b>Alarms and timers that actually wake you</b>
+      <span>Real system alarms, so they ring through silent mode and Focus. Ask what is set, and cancel by asking. Solum only ever sees the alarms it set itself — never the ones in your Clock app.</span>
+    </li>
+    <li>
+      <b>The clock, and exact arithmetic</b>
+      <span>No more confidently wrong mental maths, and no more guessing what today's date is.</span>
+    </li>
+    <li>
+      <b>Web search, weather, calendar and reminders</b>
+      <span>Off until you turn them on, and the app shows you each time a tool runs and what it returned.</span>
+    </li>
+  </ul>
+
+  <h2>Free, and Solum+</h2>
+  <p>Solum+ is a yearly subscription that starts with a free week. Everything else is free and stays free.</p>
+  <table>
+    <tr><th>Free</th><th>Solum+</th></tr>
+    <tr>
+      <td>Every on-device model, and Apple Intelligence<br>One connected cloud provider<br>Alarms, timers, the clock, the calculator<br>Dictation, photos, documents<br>System read-aloud voice</td>
+      <td>Unlimited cloud providers<br>Web search<br>Weather<br>Calendar and reminders<br>Neural read-aloud voice</td>
+    </tr>
+  </table>
+  <p class="note">The line is simple: talking is free, sending the assistant out to do something is not. Alarms sit on the free side because they cost nothing to run.</p>
+
+  <h2>Where things go</h2>
+  <p>Solum has no server, no account, and no analytics — there is nowhere for us to collect anything. What leaves your device is exactly what you choose, and the <a href="privacy.html">privacy policy</a> lists all of it in a single table.</p>
+
+  <div class="foot">
+    Questions or bugs? The <a href="support.html">support page</a> has the FAQ and a feedback form that goes straight to the developer.
   </div>
 </div>
 </body>
