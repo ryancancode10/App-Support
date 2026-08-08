@@ -5,41 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CodePad — Support</title>
 <style>
-  :root { color-scheme: light dark; }
+  /* 색을 두 벌로 나눴다. 예전 판은 `color-scheme: light dark`를 선언해 놓고 값은 전부
+     어두운 색으로 박아 둬서, 라이트 모드로 쓰는 사람에게도 검은 페이지가 나왔다 —
+     선언만 있고 실제로는 한 벌뿐이었다. index.html·solum 쪽은 먼저 고쳤고 여기만 남아 있었다. */
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --surface: rgba(0,0,0,0.03);
+    --line: rgba(0,0,0,0.09);
+    --text: #111827;
+    --body: #374151;
+    --muted: #5b6472;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f19;
+      --surface: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.08);
+      --text: #f3f4f6;
+      --body: #c9d1d9;
+      --muted: #8b949e;
+    }
+  }
+  /* CodePad의 띠 색. index.html의 `.card.codepad`와 같은 값이라 카드에서 넘어온 사람이
+     같은 파랑을 계속 본다. Solum 쪽과 달리 두 벌로 안 나눈 이유는 이 파랑이 흰 배경과
+     어두운 배경 양쪽에서 4:1을 넘기고, 흰 글자를 얹어도 4.6:1이 나오기 때문이다. */
+  :root { --accent: #1f6feb; --accentHover: #388bfd; --onAccent: #ffffff; }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #0b0f19;
-    color: #f3f4f6;
+    background: var(--bg);
+    color: var(--text);
     padding: 48px 24px 80px;
     line-height: 1.65;
   }
   .wrap { max-width: 680px; margin: 0 auto; }
-  h1 { font-size: 30px; margin: 0 0 24px; }
+  h1 { font-size: 30px; margin: 0 0 24px; letter-spacing: -0.01em; }
   h2 { font-size: 20px; margin: 32px 0 8px; }
-  p, li { color: #c9d1d9; font-size: 16px; }
-  a { color: #79c0ff; }
-  .back { display: inline-block; margin-bottom: 28px; color: #79c0ff; text-decoration: none; font-size: 15px; }
+  p, li { color: var(--body); font-size: 16px; }
+  a { color: var(--accent); }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 15px; }
   .btn {
     display: inline-block;
-    background: #1f6feb;
-    color: #fff;
+    background: var(--accent);
+    color: var(--onAccent);
     text-decoration: none;
     font-weight: 600;
     padding: 12px 22px;
     border-radius: 999px;
     margin: 8px 0 4px;
   }
-  .btn:hover { background: #388bfd; }
+  .btn:hover { background: var(--accentHover); }
   details {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 14px;
     padding: 14px 18px;
     margin-bottom: 10px;
   }
-  summary { cursor: pointer; font-weight: 600; }
+  summary { cursor: pointer; font-weight: 600; color: var(--text); }
   details p { margin: 10px 0 2px; font-size: 15px; }
 </style>
 </head>
@@ -56,7 +81,15 @@
 
   <details>
     <summary>Which file types can CodePad open?</summary>
-    <p>HTML, JSON, XML, YAML, JavaScript, Swift, Python, and plain text files (.txt and other text-based formats). HTML files can be previewed as rendered pages or viewed as source.</p>
+    <p>Anything that is text. CodePad no longer keeps a list of allowed extensions — the picker lets you choose any file, and the app decides how to show it once it can see the bytes. Source code is syntax-highlighted, and it knows a lot of languages: Swift, Python, JavaScript and TypeScript, C and C++, Objective-C, Java, Kotlin, C#, Go, Rust, PHP, Ruby, shell, SQL, CSS, and configuration files like TOML, INI and Dockerfile.</p>
+    <p>Some formats are drawn rather than listed. Markdown is rendered as a page, CSV and TSV become tables, and JSON, XML and YAML get their own readable layouts. HTML, SVG, PDF and images are handed to the renderer as-is, so you see the page or the picture — with HTML you can switch to the source.</p>
+    <p>CAD and simulation files are shown as text, which is what they are: STEP (.step, .stp, .p21, IFC) and VTK (.vtk, and the XML forms .vtu, .vtp, .vts) all open with highlighting. CodePad does not draw the 3D model — that needs a CAD kernel, not a viewer. A binary VTK file will say so; re-export it as ASCII and it opens.</p>
+    <p>If a file turns out not to be text and not something a browser can draw, CodePad tells you that instead of filling the screen with broken characters. Files above 4 MB open read-only, so a save can never write back a partly-loaded file.</p>
+  </details>
+
+  <details>
+    <summary>Can I make a new file?</summary>
+    <p>Yes — tap the pencil-and-square button next to the file button, type a name, and choose where it goes. The file is created where you put it, not inside CodePad, so you can find it again in the Files app or on your Mac. It opens straight into the editor.</p>
   </details>
 
   <details>

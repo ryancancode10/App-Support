@@ -5,31 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CodePad — Privacy Policy</title>
 <style>
-  :root { color-scheme: light dark; }
+  /* 색을 두 벌로 나눴다. 예전 판은 `color-scheme: light dark`를 선언해 놓고 값은 전부
+     어두운 색으로 박아 둬서, 라이트 모드로 쓰는 사람에게도 검은 페이지가 나왔다 —
+     선언만 있고 실제로는 한 벌뿐이었다. index.html·solum 쪽은 먼저 고쳤고 여기만 남아 있었다. */
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --line: rgba(0,0,0,0.09);
+    --text: #111827;
+    --body: #374151;
+    --muted: #5b6472;
+    /* CodePad의 띠 색. index.html의 `.card.codepad`와 같은 값이라 카드에서 넘어온 사람이
+       같은 파랑을 계속 본다. */
+    --accent: #1f6feb;
+    /* 강조 상자는 배경이라 불투명도로 얹는다 — 라이트에서는 파랑이 옅게 깔리고,
+       다크에서는 같은 규칙이 어두운 판 위에서 그대로 성립한다. */
+    --accentWash: rgba(31,111,235,0.07);
+    --accentEdge: rgba(31,111,235,0.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f19;
+      --line: rgba(255,255,255,0.08);
+      --text: #f3f4f6;
+      --body: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #79c0ff;
+      --accentWash: rgba(121,192,255,0.08);
+      --accentEdge: rgba(121,192,255,0.2);
+    }
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #0b0f19;
-    color: #f3f4f6;
+    background: var(--bg);
+    color: var(--text);
     padding: 48px 24px 80px;
     line-height: 1.65;
   }
   .wrap { max-width: 680px; margin: 0 auto; }
-  h1 { font-size: 30px; margin: 0 0 4px; }
-  .date { color: #8b949e; font-size: 14px; margin-bottom: 36px; }
+  h1 { font-size: 30px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .date { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
   h2 { font-size: 20px; margin: 32px 0 8px; }
-  p, li { color: #c9d1d9; font-size: 16px; }
-  a { color: #79c0ff; }
-  .back { display: inline-block; margin-bottom: 28px; color: #79c0ff; text-decoration: none; font-size: 15px; }
+  p, li { color: var(--body); font-size: 16px; }
+  a { color: var(--accent); }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 15px; }
   .highlight {
-    background: rgba(121,192,255,0.08);
-    border: 1px solid rgba(121,192,255,0.2);
+    background: var(--accentWash);
+    border: 1px solid var(--accentEdge);
     border-radius: 14px;
     padding: 16px 20px;
     margin: 24px 0;
   }
-  .highlight p { margin: 0; font-weight: 600; }
+  .highlight p { margin: 0; font-weight: 600; color: var(--text); }
 </style>
 </head>
 <body>

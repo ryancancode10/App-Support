@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solum — Support</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --surface: rgba(0,0,0,0.03);
+    --line: rgba(0,0,0,0.09);
+    --text: #111827;
+    --body: #374151;
+    --muted: #5b6472;
+    --accent: #0E6157;
+    --accentHover: #14806f;
+    --onAccent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f19;
+      --surface: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.08);
+      --text: #f3f4f6;
+      --body: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #42B98B;
+      --accentHover: #5ccfa2;
+      /* 밝은 초록 위의 흰 글자는 대비가 2:1대로 무너진다. 어두운 판에서는 버튼 글자를
+         어둡게 뒤집어야 읽힌다. */
+      --onAccent: #06251f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 48px 24px 80px;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 30px; margin: 0 0 24px; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; margin: 32px 0 8px; }
+  p, li { color: var(--body); font-size: 16px; }
+  a { color: var(--accent); }
+  .back { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 15px; }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--onAccent);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 999px;
+    margin: 8px 0 4px;
+  }
+  .btn:hover { background: var(--accentHover); }
+  details {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  summary { cursor: pointer; font-weight: 600; color: var(--text); }
+  details p { margin: 10px 0 2px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">&larr; Apps</a>
+  <h1>Solum Support</h1>
+
+  <h2>Feedback &amp; bug reports</h2>
+  <p>Found a bug, or have an idea? Send it through the feedback form — it goes straight to the developer.</p>
+  <a class="btn" href="https://forms.gle/Jm3jDNEy9FcMm2is7">Send Feedback</a>
+
+  <h2>FAQ</h2>
+
+  <details>
+    <summary>Which model should I download first?</summary>
+    <p>Open the Models screen and pick one of the recommendations. Each model shows a gauge for how it fits <em>your</em> device — start with one marked as fitting easily. Smaller models (under about 2&nbsp;GB) download faster and stay responsive; larger ones answer better but need more memory. You can delete any model later to free up space.</p>
+    <p>If your iPhone or iPad supports Apple Intelligence, you can also use Apple's built-in model with nothing to download at all.</p>
+  </details>
+
+  <details>
+    <summary>Does Solum work offline?</summary>
+    <p>Yes, with an on-device model. Once it is downloaded, chatting works in airplane mode with no network at all.</p>
+    <p>Cloud models are the exception — they need a connection, because the message goes to the provider you connected. Solum marks every model with where it runs, so you always know which kind you are talking to.</p>
+  </details>
+
+  <details>
+    <summary>How do I use my own API key?</summary>
+    <p>Go to Settings and add a key for a provider you already have an account with. Its models then appear in the same picker as your on-device ones. Your key is stored in the iOS Keychain and sent only to that provider — Solum has no server in between and takes nothing for it. You pay your provider directly, at their prices.</p>
+  </details>
+
+  <details>
+    <summary>The app quit while loading a model.</summary>
+    <p>That usually means the model was too large for the memory your device can give one app — which is a good deal less than the device's total RAM. Pick a model whose gauge says it fits, or lower the context length in Settings, which is the other thing that grows memory use. Closing other apps first can help on tighter devices.</p>
+  </details>
+
+  <details>
+    <summary>Why is the AI slow, or why does my phone get warm?</summary>
+    <p>Running a language model is heavy work for a phone. Try a smaller model, keep Metal (GPU) acceleration enabled in Settings, or start a fresh conversation — very long chats take longer to process every turn. Newer devices with more memory run larger models noticeably faster.</p>
+  </details>
+
+  <details>
+    <summary>How do I send photos or voice messages to the AI?</summary>
+    <p>Both depend on the model. Models with a Vision badge accept photos — tap the paperclip in the chat bar. Models with a Voice Input badge accept spoken audio directly. With any other model the microphone button still works: it turns your speech into text on the device first.</p>
+  </details>
+
+  <details>
+    <summary>A model download failed or stopped — what now?</summary>
+    <p>Downloads continue in the background and can be paused and resumed from the Models screen. If one fails, check your connection and free storage space, then tap the model to retry. Partially downloaded files are cleaned up automatically.</p>
+  </details>
+
+  <details>
+    <summary>I asked for an alarm and can't find it in the Clock app.</summary>
+    <p>Alarms and timers the assistant sets belong to Solum, not to the Clock app, so they will not appear there. They are still real system alarms — they ring even when your phone is on silent or in Focus.</p>
+    <p>To see them, ask <em>"what alarms do I have?"</em>; to stop one, ask <em>"cancel the 7am alarm"</em>. The assistant can only see and cancel the alarms it set itself, so it will never tell you that you have none when your Clock app is full of them. If you would rather not have this at all, turn off Alarms for Solum in iOS Settings — but note that alarms already set will keep ringing until you cancel them from inside the app first.</p>
+  </details>
+
+  <details>
+    <summary>Cancelling a repeating alarm asked me to confirm. Why?</summary>
+    <p>Because there is no way to skip just one day of it. If an alarm repeats every weekday and you say "cancel tomorrow's alarm", the only thing iOS can do is end the whole repeat — so the assistant stops and asks instead of guessing. If it is ringing right now, saying "stop" just silences it and leaves the schedule alone; the alarm still rings tomorrow.</p>
+  </details>
+
+  <details>
+    <summary>What is Solum+?</summary>
+    <p>A yearly subscription that starts with a free week. It unlocks the assistant's outward-reaching tools — web search, weather, calendar and reminders — plus the neural read-aloud voice and connecting more than one cloud provider at a time. US$4.99 a year after the trial; the App Store shows the price in your own currency before you confirm anything.</p>
+    <p>What stays free is not a demo: every on-device model, Apple Intelligence, one cloud provider, dictation, photos and documents, the system read-aloud voice, and the assistant's local tools — the clock, the calculator, and alarms and timers.</p>
+    <p>Subscribed already and switched devices? Tap <strong>Restore Purchases</strong> in Settings while signed in to the same Apple Account. You can cancel any time from Settings › your name › Subscriptions on your device; cancelling during the free week costs nothing.</p>
+  </details>
+
+  <details>
+    <summary>Is my data collected or uploaded anywhere?</summary>
+    <p>Nothing is ever sent to us — Solum has no server, no account, and no analytics. What can leave your device is exactly what you choose: a message to a cloud model you connected, your search words if you turn on web search, or a place for the weather. The <a href="privacy.html">privacy policy</a> lists all of it in one table.</p>
+  </details>
+</div>
+</body>
+</html>
