@@ -4,142 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solum — Privacy Policy</title>
+<meta http-equiv="refresh" content="0; url=solum/privacy.html">
+<link rel="canonical" href="https://ryancancode10.github.io/App-Support/solum/privacy.html">
+<meta name="robots" content="noindex">
 <style>
-  :root {
-    color-scheme: light dark;
-    --bg: #ffffff;
-    --surface: rgba(0,0,0,0.03);
-    --line: rgba(0,0,0,0.09);
-    --text: #111827;
-    --body: #374151;
-    --muted: #5b6472;
-    --accent: #0E6157;
-    --accentSoft: rgba(14,97,87,0.07);
-    --accentLine: rgba(14,97,87,0.22);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b0f19;
-      --surface: rgba(255,255,255,0.05);
-      --line: rgba(255,255,255,0.08);
-      --text: #f3f4f6;
-      --body: #c9d1d9;
-      --muted: #8b949e;
-      --accent: #42B98B;
-      --accentSoft: rgba(66,185,139,0.08);
-      --accentLine: rgba(66,185,139,0.22);
-    }
-  }
-  * { box-sizing: border-box; }
+  :root { color-scheme: light dark; }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 48px 24px 80px;
-    line-height: 1.65;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    padding: 2rem;
+    text-align: center;
+    font: 1rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   }
-  .wrap { max-width: 680px; margin: 0 auto; }
-  h1 { font-size: 30px; margin: 0 0 4px; letter-spacing: -0.01em; }
-  .date { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
-  h2 { font-size: 20px; margin: 32px 0 8px; }
-  p, li { color: var(--body); font-size: 16px; }
-  li { margin-bottom: 6px; }
-  a { color: var(--accent); }
-  .back { display: inline-block; margin-bottom: 28px; color: var(--accent); text-decoration: none; font-size: 15px; }
-  .highlight {
-    background: var(--accentSoft);
-    border: 1px solid var(--accentLine);
-    border-radius: 14px;
-    padding: 16px 20px;
-    margin: 24px 0;
-  }
-  .highlight p { margin: 0; font-weight: 600; color: var(--text); }
-  /* 어디로 나가는지를 표로 못 박는다. 이 앱에서 사람들이 실제로 묻는 건 "이건
-     나가나요?" 하나인데, 문단으로 흩어 놓으면 그 답이 안 보인다. */
-  table { border-collapse: collapse; width: 100%; margin: 16px 0 8px; font-size: 15px; }
-  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
-  td { color: var(--body); }
-  td strong { color: var(--text); }
-  .no { color: var(--accent); font-weight: 600; }
+  a { color: #0E6157; }
+  @media (prefers-color-scheme: dark) { a { color: #4fd1c5; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Apps</a>
-  <h1>Solum Privacy Policy</h1>
-  <p class="date">Last updated: August 5, 2026</p>
-
-  <div class="highlight">
-    <p>Solum has no server of its own. There is no account and no analytics, and nothing is ever sent to us. When something does leave your device, it is because you chose a feature that needs it — and the app tells you so on screen.</p>
-  </div>
-
-  <h2>Two ways to chat, chosen per conversation</h2>
-  <p>Solum can run an AI model directly on your iPhone or iPad. It can also talk to a hosted provider using an API key that <em>you</em> supply. Those two differ in the one way that matters — whether your words leave the device — so the app never hides which is active. Each model is marked with where it runs, and the first time you open a cloud conversation the app states, in a sentence, exactly where the messages are going.</p>
-
-  <h2>What leaves your device, and when</h2>
-  <table>
-    <tr><th>Feature</th><th>Leaves your device?</th></tr>
-    <tr>
-      <td><strong>On-device models</strong><br>GGUF, LiteRT-LM, MLX, and Apple's built-in model</td>
-      <td><span class="no">No.</span> Your messages, the replies, and any attached photo or recording are processed on the device. This works with no network at all.</td>
-    </tr>
-    <tr>
-      <td><strong>Cloud models</strong><br>only after you add your own API key</td>
-      <td><strong>Yes.</strong> The conversation — your messages, attachments, and tool results — goes from your device straight to the provider you picked. It does not pass through any server of ours, because there isn't one.</td>
-    </tr>
-    <tr>
-      <td><strong>Web search</strong><br>off until you turn it on</td>
-      <td><strong>Yes.</strong> Your search words are sent to a public search service to fetch results.</td>
-    </tr>
-    <tr>
-      <td><strong>Weather</strong></td>
-      <td><strong>Yes.</strong> A place name — or your approximate location, if you allow it — is sent to Apple's WeatherKit. Your conversation is not.</td>
-    </tr>
-    <tr>
-      <td><strong>Finding and downloading models</strong><br>and the optional neural voice</td>
-      <td><strong>Yes.</strong> Your model search terms and the download request go to the model host (Hugging Face). Nothing about you is attached, and your conversations are not.</td>
-    </tr>
-    <tr>
-      <td><strong>Alarms and timers</strong><br>set by the assistant when you ask</td>
-      <td><span class="no">No.</span> They are handed to iOS on the device and ring from there — nothing about them is sent anywhere. Solum can only see and cancel the ones it set itself.</td>
-    </tr>
-    <tr>
-      <td><strong>Everything else</strong><br>chat history, settings, attachments, downloaded models</td>
-      <td><span class="no">No.</span> Stored only on your device. Deleting a conversation — or the app — deletes it. Nothing is synced anywhere.</td>
-    </tr>
-  </table>
-
-  <h2>Your API keys</h2>
-  <p>Keys you add are stored in the iOS Keychain, which the system keeps encrypted. A key is sent only to the provider it belongs to, and only when you use one of that provider's models. It is never sent anywhere else and never included in analytics, because there are none. Deleting a key removes it from the Keychain.</p>
-  <p>Solum ships with no key of its own. If you never add one, the app never contacts a model provider.</p>
-
-  <h2>What the providers do with it</h2>
-  <p>Once a message reaches a provider you connected, that provider's privacy policy governs it — including how long they keep it and whether they train on it. Solum has no control over that and cannot delete anything on your behalf. If this matters to you, read the policy of the provider whose key you are adding, or stay with the on-device models.</p>
-
-  <h2>Permissions Solum may ask for</h2>
-  <p>Every permission is optional and tied to something you can see:</p>
-  <ul>
-    <li><strong>Microphone and Speech Recognition</strong> — to dictate a message, or to send a voice recording to a model that can listen. Dictation is performed on the device.</li>
-    <li><strong>Camera and Photos</strong> — only to attach an image you picked.</li>
-    <li><strong>Location, while using the app</strong> — only for "what's the weather here".</li>
-    <li><strong>Calendar and Reminders</strong> — only when you ask the assistant to add one. Each write is shown and confirmed by you first.</li>
-    <li><strong>Alarms</strong> — only when you ask the assistant to set an alarm or a timer. These are real system alarms, so they ring even in silent mode; you can see and cancel every one of them from inside the app. Solum can only see the alarms it set itself — never the ones in your Clock app.</li>
-  </ul>
-  <p>Declining any of these leaves the rest of the app working.</p>
-
-  <h2>Purchases</h2>
-  <p>Solum+ is a yearly subscription, and Apple handles all of it. We receive no payment details — no card, no name, no address — and we are never told whether any particular person subscribed. Starting the free week, renewing, cancelling, and restoring all go through your Apple Account and tell us nothing about you.</p>
-
-  <h2>Children</h2>
-  <p>Solum is not directed at children and collects no personal information from anyone. If you connect a cloud provider, that provider's own terms and age requirements apply to what you send them.</p>
-
-  <h2>Changes to this policy</h2>
-  <p>If this policy changes, the updated version is posted on this page with a new "Last updated" date. If a change ever means more data leaves your device, it will be described here in plain language.</p>
-
-  <h2>Contact</h2>
-  <p>Questions about privacy? See the <a href="support.html">support page</a>.</p>
-</div>
+  <p>The Solum privacy policy has moved.</p>
+  <p><a href="solum/privacy.html">Continue to the Solum privacy policy</a></p>
 </body>
 </html>
