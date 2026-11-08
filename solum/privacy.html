@@ -69,7 +69,7 @@
 <div class="wrap">
   <a class="back" href="../index.html">&larr; Apps</a>
   <h1>Solum Privacy Policy</h1>
-  <p class="date">Last updated: August 15, 2026</p>
+  <p class="date">Last updated: November 8, 2026</p>
 
   <div class="highlight">
     <p>Solum has no server of its own. There is no account and no analytics, and nothing is ever sent to us. When something does leave your device, it is because you chose a feature that needs it. Every one of those features is listed on this page.</p>
@@ -91,7 +91,15 @@
     </tr>
     <tr>
       <td><strong>Web search</strong><br>off until you turn it on</td>
-      <td><strong>Yes.</strong> Your search words are sent to a public search service to fetch results.</td>
+      <td><strong>Yes.</strong> Your search words are sent to a public search service to fetch results. If you add a key for a search service (Exa, Tavily, or Brave Search), the search words go to that service instead, with your key.</td>
+    </tr>
+    <tr>
+      <td><strong>Cloud voice</strong><br>off until you pick it and add a key</td>
+      <td><strong>Yes.</strong> For read-aloud, the reply text is sent to OpenAI to be turned into speech. For dictation, your recording is sent to OpenAI or Groq — whichever you picked — to be turned into text. On-device voice and dictation send nothing.</td>
+    </tr>
+    <tr>
+      <td><strong>Making pictures</strong><br>off until you turn it on</td>
+      <td><strong>Yes.</strong> The picture description, and any photo you ask to change, is sent to OpenAI or Google Gemini — whichever model you picked — using your own key. The finished picture is saved on your device.</td>
     </tr>
     <tr>
       <td><strong>Weather</strong></td>
@@ -121,8 +129,9 @@
   <h2>Permissions Solum may ask for</h2>
   <p>Every permission is optional and tied to something you can see:</p>
   <ul>
-    <li><strong>Microphone and Speech Recognition</strong> — to dictate a message, or to send a voice recording to a model that can listen. Dictation is performed on the device.</li>
-    <li><strong>Camera and Photos</strong> — only to attach an image you picked.</li>
+    <li><strong>Microphone and Speech Recognition</strong> — to dictate a message, or to send a voice recording to a model that can listen. Dictation is performed on the device, unless you picked cloud dictation (see the table above).</li>
+    <li><strong>Camera and Photos</strong> — only to attach an image you picked, or to save a picture you asked to keep (add-only; Solum cannot see your library this way).</li>
+    <li><strong>Notifications</strong> — only to tell you a cloud reply is ready while Solum is in the background. You can turn this off in Settings.</li>
     <li><strong>Location, while using the app</strong> — only for "what's the weather here".</li>
     <li><strong>Calendar and Reminders</strong> — only when you ask the assistant to add one. Each write is shown and confirmed by you first.</li>
     <li><strong>Alarms</strong> — only when you ask the assistant to set an alarm or a timer. These are real system alarms, so they ring even in silent mode; you can see and cancel every one of them from inside the app. Solum can only see the alarms it set itself — never the ones in your Clock app.</li>
